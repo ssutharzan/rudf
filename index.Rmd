@@ -1,0 +1,55 @@
+--- 
+title: "Introduction to creating custom functions in R"
+author: "Sreeskandarajan Sutharzan"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This tutorial provides a gentle introduction on how to create custom functions in R"
+---
+
+# About this workshop
+A gentle introduction to creating your own functions in R
+
+
+We'll focus on
+
+
+
+* Components of R functions
+* Why do we need custom functions
+* How to create a custom functions
+* Types of custom functions
+* Simple examples
+
+# Functions in R
+Functions are R objects
+
+which are used to
+
+* create
+* access
+* manipulate
+* delete
+
+other R Objects
+
+
+
+Hence, functions are key elements of R
+
+Examples
+```{r eval=FALSE}
+vector()
+length()
+plot()
+ls()
+[]
+rm()
+```
+
+
+# Why/When do you need custom function
+# Temp
