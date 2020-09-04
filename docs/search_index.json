@@ -1,6 +1,6 @@
 [
-["index.html", "Introduction to creating custom functions in R 1 About this workshop", " Introduction to creating custom functions in R Sreeskandarajan Sutharzan 2020-09-03 1 About this workshop A gentle introduction to creating your own functions in R We’ll focus on Components of R functions Why do we need custom functions How to create a custom functions Types of custom functions Simple examples "],
+["index.html", "Introduction to creating custom functions in R 1 About this workshop", " Introduction to creating custom functions in R Sreeskandarajan Sutharzan 2020-09-04 1 About this workshop A gentle introduction to creating your own functions in R We’ll focus on Components of R functions Why do we need custom functions How to create a custom functions Types of custom functions Simple examples "],
 ["functions-in-r.html", "2 Functions in R", " 2 Functions in R Functions are R objects which are used to create access manipulate delete other R Objects Hence, functions are key elements of R Examples vector() length() plot() ls() [] rm() "],
 ["whywhen-do-you-need-custom-function.html", "3 Why/When do you need custom function", " 3 Why/When do you need custom function "],
-["temp.html", "4 Temp", " 4 Temp Content coming soon! "]
+["temp.html", "4 Temp", " 4 Temp Content coming soon! Await! "]
 ]
