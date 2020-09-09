@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Returning multiple objects | Introduction to creating custom functions in R</title>
+  <title>6 Arguments with default values | Introduction to creating custom functions in R</title>
   <meta name="description" content="This tutorial provides a gentle introduction on how to create custom functions in R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Returning multiple objects | Introduction to creating custom functions in R" />
+  <meta property="og:title" content="6 Arguments with default values | Introduction to creating custom functions in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Returning multiple objects | Introduction to creating custom functions in R" />
+  <meta name="twitter:title" content="6 Arguments with default values | Introduction to creating custom functions in R" />
   
   <meta name="twitter:description" content="This tutorial provides a gentle introduction on how to create custom functions in R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="writing-custom-functions.html"/>
-<link rel="next" href="arguments-with-default-values.html"/>
+<link rel="prev" href="returning-multiple-objects.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -160,44 +160,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="returning-multiple-objects" class="section level1">
-<h1><span class="header-section-number">5</span> Returning multiple objects</h1>
-<p>Combine the objects you want into a single object</p>
+<div id="arguments-with-default-values" class="section level1">
+<h1><span class="header-section-number">6</span> Arguments with default values</h1>
+<p><strong>Syntax:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="arguments-with-default-values.html#cb10-1"></a><span class="op">&lt;</span>name<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span><span class="op">-</span><span class="st"> </span><span class="cf">function</span>(<span class="op">&lt;</span>argument <span class="dv">1</span><span class="op">&gt;</span>, <span class="op">&lt;</span>argument <span class="dv">2</span><span class="op">&gt;=</span><span class="er">&lt;</span>default value<span class="op">&gt;</span>) {</span>
+<span id="cb10-2"><a href="arguments-with-default-values.html#cb10-2"></a>  <span class="op">&lt;</span>body<span class="op">&gt;</span></span>
+<span id="cb10-3"><a href="arguments-with-default-values.html#cb10-3"></a><span class="st">  </span><span class="kw">return</span>(<span class="op">&lt;</span>return object<span class="op">&gt;</span>)</span>
+<span id="cb10-4"><a href="arguments-with-default-values.html#cb10-4"></a>}</span></code></pre></div>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="returning-multiple-objects.html#cb6-1"></a>countA &lt;-<span class="st"> </span><span class="cf">function</span> (seq) {</span>
-<span id="cb6-2"><a href="returning-multiple-objects.html#cb6-2"></a><span class="co"># This function finds the number of &#39;A&#39;s in a given nucleotide sequence</span></span>
-<span id="cb6-3"><a href="returning-multiple-objects.html#cb6-3"></a>  </span>
-<span id="cb6-4"><a href="returning-multiple-objects.html#cb6-4"></a>  <span class="co"># Convert input sequence to lower case character vector</span></span>
-<span id="cb6-5"><a href="returning-multiple-objects.html#cb6-5"></a>  seq_lower &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="kw">as.vector</span>(<span class="kw">tolower</span>(seq)),<span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb6-6"><a href="returning-multiple-objects.html#cb6-6"></a>  </span>
-<span id="cb6-7"><a href="returning-multiple-objects.html#cb6-7"></a>  <span class="co"># Count the number of As</span></span>
-<span id="cb6-8"><a href="returning-multiple-objects.html#cb6-8"></a>  a_count &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(seq_lower<span class="op">==</span><span class="st">&quot;a&quot;</span>))</span>
-<span id="cb6-9"><a href="returning-multiple-objects.html#cb6-9"></a>  </span>
-<span id="cb6-10"><a href="returning-multiple-objects.html#cb6-10"></a>  <span class="co"># Preparing the returning object</span></span>
-<span id="cb6-11"><a href="returning-multiple-objects.html#cb6-11"></a>  res &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb6-12"><a href="returning-multiple-objects.html#cb6-12"></a>  res<span class="op">$</span>count &lt;-<span class="st"> </span>a_count</span>
-<span id="cb6-13"><a href="returning-multiple-objects.html#cb6-13"></a>  res<span class="op">$</span>prop &lt;-<span class="st"> </span>a_count<span class="op">/</span><span class="kw">length</span>(seq_lower)</span>
-<span id="cb6-14"><a href="returning-multiple-objects.html#cb6-14"></a></span>
-<span id="cb6-15"><a href="returning-multiple-objects.html#cb6-15"></a>  </span>
-<span id="cb6-16"><a href="returning-multiple-objects.html#cb6-16"></a>  <span class="co"># Returning the A count</span></span>
-<span id="cb6-17"><a href="returning-multiple-objects.html#cb6-17"></a>  <span class="kw">return</span>(res)</span>
-<span id="cb6-18"><a href="returning-multiple-objects.html#cb6-18"></a>}</span>
-<span id="cb6-19"><a href="returning-multiple-objects.html#cb6-19"></a></span>
-<span id="cb6-20"><a href="returning-multiple-objects.html#cb6-20"></a><span class="co"># Printing the results</span></span>
-<span id="cb6-21"><a href="returning-multiple-objects.html#cb6-21"></a>nucleotide_seq &lt;-<span class="st"> &quot;ATGCaaaTTGG&quot;</span></span>
-<span id="cb6-22"><a href="returning-multiple-objects.html#cb6-22"></a>count_res &lt;-<span class="st"> </span><span class="kw">countA</span>(<span class="dt">seq =</span> nucleotide_seq)</span>
-<span id="cb6-23"><a href="returning-multiple-objects.html#cb6-23"></a><span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&quot;Number of &#39;A&#39;s = &quot;</span>, count_res<span class="op">$</span>count,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
-<pre><code>## Number of &#39;A&#39;s = 4</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="returning-multiple-objects.html#cb8-1"></a><span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&quot;Propotion of &#39;A&#39;s = &quot;</span>, count_res<span class="op">$</span>prop,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</span></code></pre></div>
-<pre><code>## Propotion of &#39;A&#39;s = 0.363636363636364</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="arguments-with-default-values.html#cb11-1"></a>catln &lt;-<span class="st"> </span><span class="cf">function</span> (seq, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>) {</span>
+<span id="cb11-2"><a href="arguments-with-default-values.html#cb11-2"></a><span class="co"># What does this function do?</span></span>
+<span id="cb11-3"><a href="arguments-with-default-values.html#cb11-3"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(seq)) {</span>
+<span id="cb11-4"><a href="arguments-with-default-values.html#cb11-4"></a>    <span class="kw">stop</span>(<span class="st">&quot;please provide a character vector for the seq argument&quot;</span>)</span>
+<span id="cb11-5"><a href="arguments-with-default-values.html#cb11-5"></a>  }</span>
+<span id="cb11-6"><a href="arguments-with-default-values.html#cb11-6"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(sep)) {</span>
+<span id="cb11-7"><a href="arguments-with-default-values.html#cb11-7"></a>    <span class="kw">stop</span>(<span class="st">&quot;Please provide a character or characters for the sep argument&quot;</span>)</span>
+<span id="cb11-8"><a href="arguments-with-default-values.html#cb11-8"></a>  }</span>
+<span id="cb11-9"><a href="arguments-with-default-values.html#cb11-9"></a>  <span class="kw">cat</span>(seq, <span class="dt">sep =</span> sep)</span>
+<span id="cb11-10"><a href="arguments-with-default-values.html#cb11-10"></a>}</span>
+<span id="cb11-11"><a href="arguments-with-default-values.html#cb11-11"></a></span>
+<span id="cb11-12"><a href="arguments-with-default-values.html#cb11-12"></a><span class="co">## cat() vs catln()!</span></span>
+<span id="cb11-13"><a href="arguments-with-default-values.html#cb11-13"></a>seqs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AAATTT&quot;</span>,<span class="st">&quot;GC&quot;</span>)</span>
+<span id="cb11-14"><a href="arguments-with-default-values.html#cb11-14"></a><span class="kw">cat</span>(seqs)</span>
+<span id="cb11-15"><a href="arguments-with-default-values.html#cb11-15"></a><span class="kw">catln</span>(seqs)</span>
+<span id="cb11-16"><a href="arguments-with-default-values.html#cb11-16"></a><span class="kw">catln</span>(<span class="dt">seq =</span> seqs, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb11-17"><a href="arguments-with-default-values.html#cb11-17"></a><span class="kw">catln</span>(<span class="dt">seq =</span> seqs, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="writing-custom-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="arguments-with-default-values.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="returning-multiple-objects.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
