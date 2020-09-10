@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Why/When do you need custom functions | Introduction to creating custom functions in R</title>
+  <title>7 Anonymous Functions | Introduction to creating custom functions in R</title>
   <meta name="description" content="This tutorial provides a gentle introduction on how to create custom functions in R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Why/When do you need custom functions | Introduction to creating custom functions in R" />
+  <meta property="og:title" content="7 Anonymous Functions | Introduction to creating custom functions in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Why/When do you need custom functions | Introduction to creating custom functions in R" />
+  <meta name="twitter:title" content="7 Anonymous Functions | Introduction to creating custom functions in R" />
   
   <meta name="twitter:description" content="This tutorial provides a gentle introduction on how to create custom functions in R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions-in-r.html"/>
-<link rel="next" href="writing-custom-functions.html"/>
+<link rel="prev" href="arguments-with-default-values.html"/>
+<link rel="next" href="putting-all-together.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -163,23 +163,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="whywhen-do-you-need-custom-functions" class="section level1">
-<h1><span class="header-section-number">3</span> Why/When do you need custom functions</h1>
-<p>You need custom functions/user defined functions (UDFs)</p>
-<ul>
-<li>When the existing functions are not enough for your work</li>
-<li>When when need to modify/simplify an existing (e.g. wrapper)</li>
-<li>To modularize your code</li>
-<li>To write testable and elegant code</li>
-</ul>
+<div id="anonymous-functions" class="section level1">
+<h1><span class="header-section-number">7</span> Anonymous Functions</h1>
+<p>A function with out a name!</p>
+<p><strong>Example</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="anonymous-functions.html#cb12-1"></a>seqs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AATT&quot;</span>,<span class="st">&quot;TGG&quot;</span>)</span>
+<span id="cb12-2"><a href="anonymous-functions.html#cb12-2"></a>seqs_lower &lt;-<span class="st"> </span><span class="kw">sapply</span>(seqs, <span class="cf">function</span>(x) <span class="kw">tolower</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]))</span></code></pre></div>
+<p>It’s preferable to keep an anonymous function small. If it spans across multiple lines consider giving it a name!</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="functions-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="writing-custom-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="arguments-with-default-values.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="putting-all-together.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

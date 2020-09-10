@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Why/When do you need custom functions | Introduction to creating custom functions in R</title>
+  <title>8 Putting all together | Introduction to creating custom functions in R</title>
   <meta name="description" content="This tutorial provides a gentle introduction on how to create custom functions in R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Why/When do you need custom functions | Introduction to creating custom functions in R" />
+  <meta property="og:title" content="8 Putting all together | Introduction to creating custom functions in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Why/When do you need custom functions | Introduction to creating custom functions in R" />
+  <meta name="twitter:title" content="8 Putting all together | Introduction to creating custom functions in R" />
   
   <meta name="twitter:description" content="This tutorial provides a gentle introduction on how to create custom functions in R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions-in-r.html"/>
-<link rel="next" href="writing-custom-functions.html"/>
+<link rel="prev" href="anonymous-functions.html"/>
+<link rel="next" href="where-to-go-from-here.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -163,23 +163,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="whywhen-do-you-need-custom-functions" class="section level1">
-<h1><span class="header-section-number">3</span> Why/When do you need custom functions</h1>
-<p>You need custom functions/user defined functions (UDFs)</p>
-<ul>
-<li>When the existing functions are not enough for your work</li>
-<li>When when need to modify/simplify an existing (e.g. wrapper)</li>
-<li>To modularize your code</li>
-<li>To write testable and elegant code</li>
-</ul>
+<div id="putting-all-together" class="section level1">
+<h1><span class="header-section-number">8</span> Putting all together</h1>
+<p>An example funtion:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="putting-all-together.html#cb13-1"></a>count_nucleotide &lt;-<span class="st"> </span><span class="cf">function</span> (seq, <span class="dt">base =</span> <span class="st">&quot;N&quot;</span>) {</span>
+<span id="cb13-2"><a href="putting-all-together.html#cb13-2"></a>  <span class="co"># This function finds the number of occurrences of a given base </span></span>
+<span id="cb13-3"><a href="putting-all-together.html#cb13-3"></a>  <span class="co"># in a given nucleotide sequence</span></span>
+<span id="cb13-4"><a href="putting-all-together.html#cb13-4"></a>  <span class="co"># Input:</span></span>
+<span id="cb13-5"><a href="putting-all-together.html#cb13-5"></a>  <span class="co"># seq: Nucleotide sequence string</span></span>
+<span id="cb13-6"><a href="putting-all-together.html#cb13-6"></a>  <span class="co"># base: The base to count</span></span>
+<span id="cb13-7"><a href="putting-all-together.html#cb13-7"></a>  <span class="co"># Output:</span></span>
+<span id="cb13-8"><a href="putting-all-together.html#cb13-8"></a>  <span class="co"># A named list containing the following</span></span>
+<span id="cb13-9"><a href="putting-all-together.html#cb13-9"></a>  <span class="co"># count: The base count</span></span>
+<span id="cb13-10"><a href="putting-all-together.html#cb13-10"></a>  <span class="co"># prop: The base propotion</span></span>
+<span id="cb13-11"><a href="putting-all-together.html#cb13-11"></a>  </span>
+<span id="cb13-12"><a href="putting-all-together.html#cb13-12"></a>  <span class="co"># Input validation</span></span>
+<span id="cb13-13"><a href="putting-all-together.html#cb13-13"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(seq) <span class="op">|</span><span class="st"> </span><span class="kw">length</span>(seq) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) {</span>
+<span id="cb13-14"><a href="putting-all-together.html#cb13-14"></a>    <span class="kw">stop</span>(<span class="st">&quot;please provide a string as the seq argument&quot;</span>)</span>
+<span id="cb13-15"><a href="putting-all-together.html#cb13-15"></a>  }</span>
+<span id="cb13-16"><a href="putting-all-together.html#cb13-16"></a>  </span>
+<span id="cb13-17"><a href="putting-all-together.html#cb13-17"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(base) <span class="op">|</span><span class="st"> </span><span class="kw">length</span>(base) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span><span class="kw">nchar</span>(base) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) {</span>
+<span id="cb13-18"><a href="putting-all-together.html#cb13-18"></a>    <span class="kw">stop</span>(<span class="st">&quot;Please provide a base &quot;</span>)</span>
+<span id="cb13-19"><a href="putting-all-together.html#cb13-19"></a>  }</span>
+<span id="cb13-20"><a href="putting-all-together.html#cb13-20"></a>  </span>
+<span id="cb13-21"><a href="putting-all-together.html#cb13-21"></a>  <span class="co"># Splitting input sequence </span></span>
+<span id="cb13-22"><a href="putting-all-together.html#cb13-22"></a>  seq_lower &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="kw">toupper</span>(seq), <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb13-23"><a href="putting-all-together.html#cb13-23"></a>  </span>
+<span id="cb13-24"><a href="putting-all-together.html#cb13-24"></a>  <span class="co"># Counting the number of As</span></span>
+<span id="cb13-25"><a href="putting-all-together.html#cb13-25"></a>  n_count &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(seq_lower <span class="op">==</span><span class="st"> </span>base))</span>
+<span id="cb13-26"><a href="putting-all-together.html#cb13-26"></a>  </span>
+<span id="cb13-27"><a href="putting-all-together.html#cb13-27"></a>  <span class="co"># Preparing the returning object</span></span>
+<span id="cb13-28"><a href="putting-all-together.html#cb13-28"></a>  res &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb13-29"><a href="putting-all-together.html#cb13-29"></a>  res<span class="op">$</span>count &lt;-<span class="st"> </span>n_count</span>
+<span id="cb13-30"><a href="putting-all-together.html#cb13-30"></a>  res<span class="op">$</span>prop &lt;-<span class="st"> </span>n_count<span class="op">/</span><span class="kw">length</span>(seq_lower)</span>
+<span id="cb13-31"><a href="putting-all-together.html#cb13-31"></a></span>
+<span id="cb13-32"><a href="putting-all-together.html#cb13-32"></a>  </span>
+<span id="cb13-33"><a href="putting-all-together.html#cb13-33"></a>  <span class="co"># Returning the A count</span></span>
+<span id="cb13-34"><a href="putting-all-together.html#cb13-34"></a>  <span class="kw">return</span>(res)</span>
+<span id="cb13-35"><a href="putting-all-together.html#cb13-35"></a>}</span></code></pre></div>
+<p>Let’s use <em>count_nucleotide()</em>!</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="putting-all-together.html#cb14-1"></a>seqs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ANN&quot;</span>, <span class="st">&quot;TAGCTA&quot;</span>)</span>
+<span id="cb14-2"><a href="putting-all-together.html#cb14-2"></a>bases &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;N&quot;</span>,<span class="st">&quot;T&quot;</span>)</span>
+<span id="cb14-3"><a href="putting-all-together.html#cb14-3"></a></span>
+<span id="cb14-4"><a href="putting-all-together.html#cb14-4"></a>base_counts &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(seqs), <span class="cf">function</span>(x) <span class="kw">count_nucleotide</span>(seqs[x], bases[x]))</span>
+<span id="cb14-5"><a href="putting-all-together.html#cb14-5"></a>base_counts</span></code></pre></div>
+<pre><code>## [[1]]
+## [[1]]$count
+## [1] 2
+## 
+## [[1]]$prop
+## [1] 0.6666667
+## 
+## 
+## [[2]]
+## [[2]]$count
+## [1] 2
+## 
+## [[2]]$prop
+## [1] 0.3333333</code></pre>
+<p>How could you further improve <em>count_nucleotide()</em></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="functions-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="writing-custom-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anonymous-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="where-to-go-from-here.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

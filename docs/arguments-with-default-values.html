@@ -24,7 +24,7 @@
 <meta name="author" content="Sreeskandarajan Sutharzan" />
 
 
-<meta name="date" content="2020-09-08" />
+<meta name="date" content="2020-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="returning-multiple-objects.html"/>
-
+<link rel="next" href="anonymous-functions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="writing-custom-functions.html"><a href="writing-custom-functions.html"><i class="fa fa-check"></i><b>4</b> Writing custom functions</a></li>
 <li class="chapter" data-level="5" data-path="returning-multiple-objects.html"><a href="returning-multiple-objects.html"><i class="fa fa-check"></i><b>5</b> Returning multiple objects</a></li>
 <li class="chapter" data-level="6" data-path="arguments-with-default-values.html"><a href="arguments-with-default-values.html"><i class="fa fa-check"></i><b>6</b> Arguments with default values</a></li>
+<li class="chapter" data-level="7" data-path="anonymous-functions.html"><a href="anonymous-functions.html"><i class="fa fa-check"></i><b>7</b> Anonymous Functions</a></li>
+<li class="chapter" data-level="8" data-path="putting-all-together.html"><a href="putting-all-together.html"><i class="fa fa-check"></i><b>8</b> Putting all together</a></li>
+<li class="chapter" data-level="9" data-path="where-to-go-from-here.html"><a href="where-to-go-from-here.html"><i class="fa fa-check"></i><b>9</b> Where to go from here</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -171,10 +174,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="arguments-with-default-values.html#cb11-1"></a>catln &lt;-<span class="st"> </span><span class="cf">function</span> (seq, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>) {</span>
 <span id="cb11-2"><a href="arguments-with-default-values.html#cb11-2"></a><span class="co"># What does this function do?</span></span>
 <span id="cb11-3"><a href="arguments-with-default-values.html#cb11-3"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(seq)) {</span>
-<span id="cb11-4"><a href="arguments-with-default-values.html#cb11-4"></a>    <span class="kw">stop</span>(<span class="st">&quot;please provide a character vector for the seq argument&quot;</span>)</span>
+<span id="cb11-4"><a href="arguments-with-default-values.html#cb11-4"></a>    <span class="kw">stop</span>(<span class="st">&quot;please provide a character vector as the seq argument&quot;</span>)</span>
 <span id="cb11-5"><a href="arguments-with-default-values.html#cb11-5"></a>  }</span>
 <span id="cb11-6"><a href="arguments-with-default-values.html#cb11-6"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(sep)) {</span>
-<span id="cb11-7"><a href="arguments-with-default-values.html#cb11-7"></a>    <span class="kw">stop</span>(<span class="st">&quot;Please provide a character or characters for the sep argument&quot;</span>)</span>
+<span id="cb11-7"><a href="arguments-with-default-values.html#cb11-7"></a>    <span class="kw">stop</span>(<span class="st">&quot;Please provide a character or characters as the sep argument&quot;</span>)</span>
 <span id="cb11-8"><a href="arguments-with-default-values.html#cb11-8"></a>  }</span>
 <span id="cb11-9"><a href="arguments-with-default-values.html#cb11-9"></a>  <span class="kw">cat</span>(seq, <span class="dt">sep =</span> sep)</span>
 <span id="cb11-10"><a href="arguments-with-default-values.html#cb11-10"></a>}</span>
@@ -185,15 +188,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-15"><a href="arguments-with-default-values.html#cb11-15"></a><span class="kw">catln</span>(seqs)</span>
 <span id="cb11-16"><a href="arguments-with-default-values.html#cb11-16"></a><span class="kw">catln</span>(<span class="dt">seq =</span> seqs, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span>
 <span id="cb11-17"><a href="arguments-with-default-values.html#cb11-17"></a><span class="kw">catln</span>(<span class="dt">seq =</span> seqs, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
-
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="returning-multiple-objects.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="returning-multiple-objects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anonymous-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
