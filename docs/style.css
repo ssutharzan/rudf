@@ -12,3 +12,22 @@ pre {
 pre code {
   white-space: inherit;
 }
+#header {
+   color: crimson;
+}
+h1 {
+   color: #f58769;
+}
+p {
+  font-size: 25px;
+}
+ul {
+  font-size: 20px;
+}
+.r {
+  font-size: 25px;
+  background: coral;
+}
+.sourceCode {
+  background: coral;
+}
