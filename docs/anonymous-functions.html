@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this workshop</a></li>
 <li class="chapter" data-level="2" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2</b> Functions in R</a></li>
-<li class="chapter" data-level="3" data-path="whywhen-do-you-need-custom-functions.html"><a href="whywhen-do-you-need-custom-functions.html"><i class="fa fa-check"></i><b>3</b> Why/When do you need custom functions</a></li>
+<li class="chapter" data-level="3" data-path="whywhen-do-you-need-udfs.html"><a href="whywhen-do-you-need-udfs.html"><i class="fa fa-check"></i><b>3</b> Why/When do you need UDFs</a></li>
 <li class="chapter" data-level="4" data-path="writing-custom-functions.html"><a href="writing-custom-functions.html"><i class="fa fa-check"></i><b>4</b> Writing custom functions</a></li>
 <li class="chapter" data-level="5" data-path="returning-multiple-objects.html"><a href="returning-multiple-objects.html"><i class="fa fa-check"></i><b>5</b> Returning multiple objects</a></li>
 <li class="chapter" data-level="6" data-path="arguments-with-default-values.html"><a href="arguments-with-default-values.html"><i class="fa fa-check"></i><b>6</b> Arguments with default values</a></li>
@@ -168,7 +168,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A function with out a name!</p>
 <p><strong>Example</strong></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="anonymous-functions.html#cb12-1"></a>seqs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AATT&quot;</span>,<span class="st">&quot;TGG&quot;</span>)</span>
-<span id="cb12-2"><a href="anonymous-functions.html#cb12-2"></a>seqs_lower &lt;-<span class="st"> </span><span class="kw">sapply</span>(seqs, <span class="cf">function</span>(x) <span class="kw">tolower</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]))</span></code></pre></div>
+<span id="cb12-2"><a href="anonymous-functions.html#cb12-2"></a>seqs_lower &lt;-<span class="st"> </span></span>
+<span id="cb12-3"><a href="anonymous-functions.html#cb12-3"></a><span class="st">  </span><span class="kw">sapply</span>(seqs, <span class="cf">function</span>(x) <span class="kw">tolower</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]))</span></code></pre></div>
 <p>It’s preferable to keep an anonymous function small. If it spans across multiple lines consider giving it a name!</p>
 </div>
             </section>

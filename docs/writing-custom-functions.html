@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="whywhen-do-you-need-custom-functions.html"/>
+<link rel="prev" href="whywhen-do-you-need-udfs.html"/>
 <link rel="next" href="returning-multiple-objects.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this workshop</a></li>
 <li class="chapter" data-level="2" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2</b> Functions in R</a></li>
-<li class="chapter" data-level="3" data-path="whywhen-do-you-need-custom-functions.html"><a href="whywhen-do-you-need-custom-functions.html"><i class="fa fa-check"></i><b>3</b> Why/When do you need custom functions</a></li>
+<li class="chapter" data-level="3" data-path="whywhen-do-you-need-udfs.html"><a href="whywhen-do-you-need-udfs.html"><i class="fa fa-check"></i><b>3</b> Why/When do you need UDFs</a></li>
 <li class="chapter" data-level="4" data-path="writing-custom-functions.html"><a href="writing-custom-functions.html"><i class="fa fa-check"></i><b>4</b> Writing custom functions</a></li>
 <li class="chapter" data-level="5" data-path="returning-multiple-objects.html"><a href="returning-multiple-objects.html"><i class="fa fa-check"></i><b>5</b> Returning multiple objects</a></li>
 <li class="chapter" data-level="6" data-path="arguments-with-default-values.html"><a href="arguments-with-default-values.html"><i class="fa fa-check"></i><b>6</b> Arguments with default values</a></li>
@@ -167,11 +167,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">4</span> Writing custom functions</h1>
 <p>Recall: Key components of a function</p>
 <ul>
-<li><strong>Arguments:</strong> Objects the function takes in (i.e. inputs)</li>
-<li>Body: Contains the code to process the inputs (gives the functionality)</li>
-<li>Environment: Where does the function works (it’s a bit more than that)</li>
-<li>Return : The object returned (i.e. output)</li>
-<li>Name: The name bound to the function object (can be nameless!)</li>
+<li><div class="bullet">
+<strong>Arguments:</strong> Objects the function takes in (i.e. inputs)
+</div></li>
+<li><div class="bullet">
+Body: Contains the code to process the inputs (gives the functionality)
+</div></li>
+<li><div class="bullet">
+Environment: Where does the function works
+(it’s a bit more than that)
+</div></li>
+<li><div class="bullet">
+Return : The object returned (i.e. output)
+</div></li>
+<li><div class="bullet">
+Name: The name bound to the function object (can be nameless!)
+</div></li>
 </ul>
 <p><strong>Syntax:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="writing-custom-functions.html#cb2-1"></a><span class="op">&lt;</span>name<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span><span class="op">-</span><span class="st"> </span><span class="cf">function</span>(<span class="op">&lt;</span>argument <span class="dv">1</span><span class="op">&gt;</span>, <span class="op">&lt;</span>argument <span class="dv">2</span><span class="op">&gt;</span>) {</span>
@@ -180,17 +191,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-4"><a href="writing-custom-functions.html#cb2-4"></a>}</span></code></pre></div>
 <p><strong>Example</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="writing-custom-functions.html#cb3-1"></a>countA &lt;-<span class="st"> </span><span class="cf">function</span> (seq) {</span>
-<span id="cb3-2"><a href="writing-custom-functions.html#cb3-2"></a><span class="co"># This function finds the number of &#39;A&#39;s in a given nucleotide sequence</span></span>
-<span id="cb3-3"><a href="writing-custom-functions.html#cb3-3"></a>  </span>
-<span id="cb3-4"><a href="writing-custom-functions.html#cb3-4"></a>  <span class="co"># Convert input sequence to lower case character vector</span></span>
-<span id="cb3-5"><a href="writing-custom-functions.html#cb3-5"></a>  seq_lower &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="kw">as.vector</span>(<span class="kw">tolower</span>(seq)),<span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb3-6"><a href="writing-custom-functions.html#cb3-6"></a>  </span>
-<span id="cb3-7"><a href="writing-custom-functions.html#cb3-7"></a>  <span class="co"># Count the number of As</span></span>
-<span id="cb3-8"><a href="writing-custom-functions.html#cb3-8"></a>  a_count &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(seq_lower<span class="op">==</span><span class="st">&quot;a&quot;</span>))</span>
-<span id="cb3-9"><a href="writing-custom-functions.html#cb3-9"></a>  </span>
-<span id="cb3-10"><a href="writing-custom-functions.html#cb3-10"></a>  <span class="co"># Returning the A count</span></span>
-<span id="cb3-11"><a href="writing-custom-functions.html#cb3-11"></a>  <span class="kw">return</span>(a_count)</span>
-<span id="cb3-12"><a href="writing-custom-functions.html#cb3-12"></a>}</span></code></pre></div>
+<span id="cb3-2"><a href="writing-custom-functions.html#cb3-2"></a>  <span class="co"># This function finds the number of &#39;A&#39;s </span></span>
+<span id="cb3-3"><a href="writing-custom-functions.html#cb3-3"></a>  <span class="co"># in a given nucleotide sequence</span></span>
+<span id="cb3-4"><a href="writing-custom-functions.html#cb3-4"></a>  </span>
+<span id="cb3-5"><a href="writing-custom-functions.html#cb3-5"></a>  <span class="co"># Convert input sequence to lower case character vector</span></span>
+<span id="cb3-6"><a href="writing-custom-functions.html#cb3-6"></a>  seq_lower &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="kw">tolower</span>(seq),<span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb3-7"><a href="writing-custom-functions.html#cb3-7"></a>  </span>
+<span id="cb3-8"><a href="writing-custom-functions.html#cb3-8"></a>  <span class="co"># Count the number of As</span></span>
+<span id="cb3-9"><a href="writing-custom-functions.html#cb3-9"></a>  a_count &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(seq_lower<span class="op">==</span><span class="st">&quot;a&quot;</span>))</span>
+<span id="cb3-10"><a href="writing-custom-functions.html#cb3-10"></a>  </span>
+<span id="cb3-11"><a href="writing-custom-functions.html#cb3-11"></a>  <span class="co"># Returning the A count</span></span>
+<span id="cb3-12"><a href="writing-custom-functions.html#cb3-12"></a>  <span class="kw">return</span>(a_count)</span>
+<span id="cb3-13"><a href="writing-custom-functions.html#cb3-13"></a>}</span></code></pre></div>
 <p>Let’s invoke the function!</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="writing-custom-functions.html#cb4-1"></a><span class="co"># Input nucleotide string sequence </span></span>
 <span id="cb4-2"><a href="writing-custom-functions.html#cb4-2"></a>nucleotide_seq &lt;-<span class="st"> &quot;ATGCaaaTTGG&quot;</span> <span class="co"># has 4 &#39;A&#39;s !</span></span>
@@ -205,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="whywhen-do-you-need-custom-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="whywhen-do-you-need-udfs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="returning-multiple-objects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

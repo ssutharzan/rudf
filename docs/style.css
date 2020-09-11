@@ -22,12 +22,12 @@ p {
   font-size: 25px;
 }
 ul {
-  font-size: 20px;
+  font-size: 16px;
 }
 .r {
   font-size: 25px;
-  background: coral;
 }
-.sourceCode {
-  background: coral;
+
+.bullet {
+  font-size: 25px;
 }

@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this workshop</a></li>
 <li class="chapter" data-level="2" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2</b> Functions in R</a></li>
-<li class="chapter" data-level="3" data-path="whywhen-do-you-need-custom-functions.html"><a href="whywhen-do-you-need-custom-functions.html"><i class="fa fa-check"></i><b>3</b> Why/When do you need custom functions</a></li>
+<li class="chapter" data-level="3" data-path="whywhen-do-you-need-udfs.html"><a href="whywhen-do-you-need-udfs.html"><i class="fa fa-check"></i><b>3</b> Why/When do you need UDFs</a></li>
 <li class="chapter" data-level="4" data-path="writing-custom-functions.html"><a href="writing-custom-functions.html"><i class="fa fa-check"></i><b>4</b> Writing custom functions</a></li>
 <li class="chapter" data-level="5" data-path="returning-multiple-objects.html"><a href="returning-multiple-objects.html"><i class="fa fa-check"></i><b>5</b> Returning multiple objects</a></li>
 <li class="chapter" data-level="6" data-path="arguments-with-default-values.html"><a href="arguments-with-default-values.html"><i class="fa fa-check"></i><b>6</b> Arguments with default values</a></li>
@@ -187,15 +187,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-19"><a href="putting-all-together.html#cb13-19"></a>  }</span>
 <span id="cb13-20"><a href="putting-all-together.html#cb13-20"></a>  </span>
 <span id="cb13-21"><a href="putting-all-together.html#cb13-21"></a>  <span class="co"># Splitting input sequence </span></span>
-<span id="cb13-22"><a href="putting-all-together.html#cb13-22"></a>  seq_lower &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="kw">toupper</span>(seq), <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb13-22"><a href="putting-all-together.html#cb13-22"></a>  seq_upper &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="kw">toupper</span>(seq), <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
 <span id="cb13-23"><a href="putting-all-together.html#cb13-23"></a>  </span>
 <span id="cb13-24"><a href="putting-all-together.html#cb13-24"></a>  <span class="co"># Counting the number of As</span></span>
-<span id="cb13-25"><a href="putting-all-together.html#cb13-25"></a>  n_count &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(seq_lower <span class="op">==</span><span class="st"> </span>base))</span>
+<span id="cb13-25"><a href="putting-all-together.html#cb13-25"></a>  n_count &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(seq_upper <span class="op">==</span><span class="st"> </span><span class="kw">toupper</span>(base)))</span>
 <span id="cb13-26"><a href="putting-all-together.html#cb13-26"></a>  </span>
 <span id="cb13-27"><a href="putting-all-together.html#cb13-27"></a>  <span class="co"># Preparing the returning object</span></span>
 <span id="cb13-28"><a href="putting-all-together.html#cb13-28"></a>  res &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
 <span id="cb13-29"><a href="putting-all-together.html#cb13-29"></a>  res<span class="op">$</span>count &lt;-<span class="st"> </span>n_count</span>
-<span id="cb13-30"><a href="putting-all-together.html#cb13-30"></a>  res<span class="op">$</span>prop &lt;-<span class="st"> </span>n_count<span class="op">/</span><span class="kw">length</span>(seq_lower)</span>
+<span id="cb13-30"><a href="putting-all-together.html#cb13-30"></a>  res<span class="op">$</span>prop &lt;-<span class="st"> </span>n_count<span class="op">/</span><span class="kw">length</span>(seq_upper)</span>
 <span id="cb13-31"><a href="putting-all-together.html#cb13-31"></a></span>
 <span id="cb13-32"><a href="putting-all-together.html#cb13-32"></a>  </span>
 <span id="cb13-33"><a href="putting-all-together.html#cb13-33"></a>  <span class="co"># Returning the A count</span></span>
